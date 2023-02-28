@@ -1,18 +1,44 @@
 ; ANSI-Windows 1252
 ;|
-dtimg.lsp
+    dtimg.lsp
+
+    Detach images from drawings contained in a folder.
+
+    Use APPLOAD to load dtimg.lsp and fct.lsp.
+
+    Enter dtimg in Autocad and choose folder.
+
+    Drawings are not open.
+
+    PLEASE NOTE, there is no going back.
+
+    first broadcast : https://cadxp.com/topic/49580-détacher-une-image/#comment-298000
+
+    No copyright: (!) 2021 by Frédéric Coulon.
+    No license: Do with it what you want.
 
 |;
+;Dependencies
 (vl-load-com)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:dtimg (/ axdoc lf dir)
-    (if (setq dir (getdir) lf (vl-directory-files dir "*.dwg" 1))
-        (foreach f lf
-            (vlax-for obj (vla-get-modelspace (setq axdoc (getaxdbdoc (strcat dir f))))
+(load "fct.lsp")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun c:dtimg (/ axdoc lfil dir)
+        ; Choose folder.
+    (if (setq dir (getdir) 
+              ; dwg liste.
+              lfil (vl-directory-files dir "*.dwg" 1)) 
+        ; Loop over files
+        (foreach f lfil 
+            ; Loop over objects.
+            (vlax-for obj (vla-get-modelspace
+                          (setq axdoc (getaxdbdoc (strcat dir f))))
+                ; If the object is an image.
                 (if (= (vla-get-objectname obj) "AcDbRasterImage")
+                    ; Delete it from the dictionary "ACAD_IMAGE_DICT"
                     (vla-delete 
                         (vla-item 
-                            (vla-item (vla-get-dictionaries axdoc ) "ACAD_IMAGE_DICT") 
+                            (vla-item (vla-get-dictionaries axdoc )
+                                      "ACAD_IMAGE_DICT") 
                             (vla-get-name obj)
                         )
                     ) 
@@ -24,28 +50,6 @@ dtimg.lsp
     )
 (princ)
 )
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun getdir( / shell rep)
-  (setq shell (vlax-create-object "Shell.Application")
-         rep (vlax-invoke shell 'browseforfolder 0 "Sélectionnez le dossier" 512 "")
-  )
-  (vlax-release-object shell)
-  (strcat (vlax-get-property (vlax-get-property rep 'self) 'path) "\\")
-)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun getaxdbdoc (filename / axdbdoc release)
-  (setq axdbdoc
-     (vlax-create-object
-       (if (< (setq release (atoi (getvar "ACADVER"))) 16)
-         "ObjectDBX.AxDbDocument"
-         (strcat "ObjectDBX.AxDbDocument." (itoa release))
-       )
-     )
-  )
-  (if (vl-catch-all-apply 'vla-open (list axdbdoc filename))
-    (not (vlax-release-object axdbdoc))
-    axdbdoc
-  )
-)
-;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
