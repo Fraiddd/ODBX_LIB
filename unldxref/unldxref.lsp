@@ -1,13 +1,13 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    dtxref.lsp 1.0
+    unldxref.lsp 1.0
 
-    Detach XREF from drawings contained in a folder.
+    Reload XREF from drawings contained in a folder.
 
-    Place the files, dtxref.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, unldxref.lsp and fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load dtxref.lsp and fct.lsp.
+    Use APPLOAD to load unldxref.lsp and fct.lsp.
 
     Enter dtimg in Autocad and choose folder.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:dtxref (/ axdoc lfil dir)
+(defun c:unldxref (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
@@ -34,9 +34,9 @@
         (foreach f lfil 
             ; Loop over blocks.
 			(vlax-for bloc (vla-get-blocks (setq axdoc (getaxdbdoc (strcat dir f))))
-				; If the block is an xref, it's detached.
+				; If the block is an xref, it's unloaded.
 				(if	(= :vlax-true (vla-get-isxref bloc))
-					(vla-detach (vla-item (vla-get-Blocks axdoc)
+					(vla-unload (vla-item (vla-get-Blocks axdoc)
 										  (eval (vla-get-Name bloc))))
 				)
 			)
