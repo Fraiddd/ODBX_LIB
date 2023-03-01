@@ -3,9 +3,9 @@
 ObjectDBX allows you to create your own 'ObjectDBX Host Application' 
 a standalone app that can load and manipulate drawings.
 
-this is perfect for batch processing dwgs.
+This is perfect for batch processing dwgs.
 
-The function that retrieves the ObjectDBX
+The function that retrieves the ObjectDBX :
 
 ```
 (defun getaxdbdoc (filename / axdbdoc release)
@@ -24,7 +24,25 @@ The function that retrieves the ObjectDBX
 )
 
 ```
+Principle of use :
 
+```
+(defun c:foo (/ axdoc lfil dir)
+        ; Choose folder.
+    (if (setq dir (getdir) 
+              ; dwg liste.
+              lfil (vl-directory-files dir "*.dwg" 1)) 
+        ; Loop over files.
+        (foreach f lfil 
+			    (setq axdoc (getaxdbdoc (strcat dir f)))
+			    (dofoo axdoc)
+			    (vla-saveas axdoc (strcat dir f))
+			    (vlax-release-object axdoc)
+        )
+    )
+(princ)
+)
+```
 
 
 
