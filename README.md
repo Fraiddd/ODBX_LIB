@@ -34,10 +34,10 @@ Principle of use :
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			    (setq axdoc (getaxdbdoc (strcat dir f)))
-			    (dofoo axdoc)
-			    (vla-saveas axdoc (strcat dir f))
-			    (vlax-release-object axdoc)
+          (setq axdoc (getaxdbdoc (strcat dir f)))
+          (dofoo axdoc)
+          (vla-saveas axdoc (strcat dir f))
+          (vlax-release-object axdoc)
         )
     )
 (princ)
