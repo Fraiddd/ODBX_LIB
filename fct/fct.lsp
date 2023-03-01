@@ -3,19 +3,24 @@
 ;|
     fct.lsp
 
-    
+
+
+    Tested on Windows 10 and Autocad 2015.
 
     :No copyright: (!) 2021 by Frédéric Coulon.
     :No license: Do with it what you want.
 |;
+; Dependencies
 (vl-load-com)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+
 (defun getdir( / shell rep)
   (setq shell (vlax-create-object "Shell.Application")
          rep (vlax-invoke shell 
                           'browseforfolder
                           0
-                          "Sélectionnez le dossier"
+                          "Choose folder"
                           512
                           ""
               )

@@ -1,8 +1,11 @@
 ; ANSI-Windows 1252
+; Autolisp, Visual Lisp
 ;|
-    dtimg.lsp
+    dtimg.lsp 1.0
 
     Detach images from drawings contained in a folder.
+
+    Place the files, dtimg.lsp and fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load dtimg.lsp and fct.lsp.
 
@@ -12,7 +15,10 @@
 
     PLEASE NOTE, there is no going back.
 
-    first broadcast : https://cadxp.com/topic/49580-détacher-une-image/#comment-298000
+    Tested on Windows 10 and Autocad 2015.
+
+    First broadcast : 
+    https://cadxp.com/topic/49580-détacher-une-image/#comment-298000
 
     No copyright: (!) 2021 by Frédéric Coulon.
     No license: Do with it what you want.
@@ -27,14 +33,14 @@
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
-        ; Loop over files
+        ; Loop over files.
         (foreach f lfil 
             ; Loop over objects.
             (vlax-for obj (vla-get-modelspace
                           (setq axdoc (getaxdbdoc (strcat dir f))))
                 ; If the object is an image.
                 (if (= (vla-get-objectname obj) "AcDbRasterImage")
-                    ; Delete it from the dictionary "ACAD_IMAGE_DICT"
+                    ; Delete it from the dictionary "ACAD_IMAGE_DICT".
                     (vla-delete 
                         (vla-item 
                             (vla-item (vla-get-dictionaries axdoc )
