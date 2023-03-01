@@ -28,11 +28,8 @@ Principle of use :
 
 ```
 (defun c:foo (/ axdoc lfil dir)
-        ; Choose folder.
-    (if (setq dir (getdir) 
-              ; dwg liste.
+    (if (setq dir (getdir)
               lfil (vl-directory-files dir "*.dwg" 1)) 
-        ; Loop over files.
         (foreach f lfil 
           (setq axdoc (getaxdbdoc (strcat dir f)))
           (dofoo axdoc)
