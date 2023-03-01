@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_purge.lsp 1.0
+    odbx_dxf2dwg.lsp 1.0
 
-    Removes unused named references such as unused blocks or layers from the documents.
+    Convert dxf in dwg.
 
-    Place the files, odbx_purge.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_dxf2dwg.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load odbx_purge.lsp and odbx_fct.lsp.
+    Use APPLOAD to load odbx_dxf2dwg.lsp and odbx_fct.lsp.
 
-    Enter odbx_purge in Autocad and choose folder.
+    Enter odbx_dxf2dwg in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,16 +25,15 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_purge (/ axdoc lfil dir)
+(defun c:odbx_dxf2dwg (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+              lfil (vl-directory-files dir "*.dxf" 1)) 
         ; Loop over files.
         (foreach f lfil 
 			(setq axdoc (getaxdbdoc (strcat dir f)))
-			(vla-purgeall axdoc)
-			(vla-saveas axdoc (strcat dir f))
+			(vla-saveas axdoc (strcat dir (vl-string-subst ".dwg" ".dxf" f)))
 			(vlax-release-object axdoc)
         )
     )

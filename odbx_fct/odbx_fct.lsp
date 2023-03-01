@@ -7,7 +7,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    :No copyright: (!) 2021 by Frédéric Coulon.
+    :No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
     :No license: Do with it what you want.
 |;
 ; Dependencies
@@ -44,4 +44,15 @@
   )
 )
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun getaxdbdocdxf (filename / axdbdoc release)
+  (setq axdbdoc
+     (vlax-create-object
+       (if (< (setq release (atoi (getvar "ACADVER"))) 16)
+         "ObjectDBX.AxDbDocument"
+         (strcat "ObjectDBX.AxDbDocument." (itoa release))
+       )
+     )
+  )
+  (vlax-invoke-method axdbdoc 'DxfIn filename)
+)
 
