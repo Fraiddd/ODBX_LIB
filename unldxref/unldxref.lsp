@@ -3,7 +3,7 @@
 ;|
     unldxref.lsp 1.0
 
-    Reload XREF from drawings contained in a folder.
+    Unload XREF from drawings contained in a folder.
 
     Place the files, unldxref.lsp and fct.lsp, in an Autocad approved folder.
 
