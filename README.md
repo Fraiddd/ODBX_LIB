@@ -1,7 +1,7 @@
 # ODBX_LIB
 
-ObjectDBX allows you to create your own 'ObjectDBX Host Application' 
-a standalone app that can load and manipulate drawings.
+[ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' 
+a standalone application that can load and manipulate drawings.
 
 This is perfect for batch processing dwgs.
 
@@ -27,12 +27,12 @@ The function that retrieves the ObjectDBX :
 Principle of use :
 
 ```
-(defun c:foo (/ axdoc lfil dir)
+(defun c:<foo> (/ axdoc lfil dir)
     (if (setq dir (getdir)
               lfil (vl-directory-files dir "*.dwg" 1)) 
         (foreach f lfil 
           (setq axdoc (getaxdbdoc (strcat dir f)))
-          (dofoo axdoc)
+          (<dofoo> axdoc)
           (vla-saveas axdoc (strcat dir f))
           (vlax-release-object axdoc)
         )
