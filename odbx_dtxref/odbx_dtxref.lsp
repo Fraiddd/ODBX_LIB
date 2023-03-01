@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    dtxref.lsp 1.0
+    odbx_dtxref.lsp 1.0
 
     Detach XREF from drawings contained in a folder.
 
-    Place the files, dtxref.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_dtxref.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load dtxref.lsp and fct.lsp.
+    Use APPLOAD to load odbx_dtxref.lsp and odbx_fct.lsp.
 
-    Enter dtimg in Autocad and choose folder.
+    Enter odbx_dtxref in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:dtxref (/ axdoc lfil dir)
+(defun c:odbx_dtxref (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.

@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    dtimg.lsp 1.0
+    odbx_dtimg.lsp 1.0
 
     Detach images from drawings contained in a folder.
 
-    Place the files, dtimg.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_dtimg.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load dtimg.lsp and fct.lsp.
+    Use APPLOAD to load odbx_dtimg.lsp and odbx_fct.lsp.
 
-    Enter dtimg in Autocad and choose folder.
+    Enter odbx_dtimg in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -28,7 +28,7 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:dtimg (/ axdoc lfil dir)
+(defun c:odbx_dtimg (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.

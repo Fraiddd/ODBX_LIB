@@ -1,7 +1,7 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    fct.lsp
+    odbx_fct.lsp
 
 
 

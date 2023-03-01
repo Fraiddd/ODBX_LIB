@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    bindxref.lsp 1.0
+    odbx_ldxref.lsp 1.0
 
-    Bind XREF from drawings contained in a folder.
+    Reload XREF from drawings contained in a folder.
 
-    Place the files, bindxref.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_ldxref.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load bindxref.lsp and fct.lsp.
+    Use APPLOAD to load odbx_ldxref.lsp and odbx_fct.lsp.
 
-    Enter dtimg in Autocad and choose folder.
+    Enter odbx_ldxref in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:bindxref (/ axdoc lfil dir)
+(defun c:odbx_ldxref (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
@@ -34,9 +34,9 @@
         (foreach f lfil 
             ; Loop over blocks.
 			(vlax-for bloc (vla-get-blocks (setq axdoc (getaxdbdoc (strcat dir f))))
-				; If the block is an xref, it'binded.
+				; If the block is an xref, it's reloaded.
 				(if	(= :vlax-true (vla-get-isxref bloc))
-					(vla-bind (vla-item (vla-get-Blocks axdoc)
+					(vla-reload (vla-item (vla-get-Blocks axdoc)
 										  (eval (vla-get-Name bloc))))
 				)
 			)

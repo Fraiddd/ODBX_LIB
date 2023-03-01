@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    unldxref.lsp 1.0
+    odbx_unldxref.lsp 1.0
 
     Unload XREF from drawings contained in a folder.
 
-    Place the files, unldxref.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_unldxref.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load unldxref.lsp and fct.lsp.
+    Use APPLOAD to load odbx_unldxref.lsp and odbx_fct.lsp.
 
-    Enter dtimg in Autocad and choose folder.
+    Enter odbx_unldxref in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:unldxref (/ axdoc lfil dir)
+(defun c:odbx_unldxref (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.

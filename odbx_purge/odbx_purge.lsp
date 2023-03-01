@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    ldxref.lsp 1.0
+    odbx_purge.lsp 1.0
 
-    Reload XREF from drawings contained in a folder.
+    Removes unused named references such as unused blocks or layers from the documents.
 
-    Place the files, ldxref.lsp and fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_purge.lsp and fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load ldxref.lsp and fct.lsp.
+    Use APPLOAD to load odbx_purge.lsp and fct.lsp.
 
-    Enter dtimg in Autocad and choose folder.
+    Enter odbx_purge in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,21 +25,15 @@
 (vl-load-com)
 (load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:ldxref (/ axdoc lfil dir)
+(defun c:odbx_purge (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-            ; Loop over blocks.
-			(vlax-for bloc (vla-get-blocks (setq axdoc (getaxdbdoc (strcat dir f))))
-				; If the block is an xref, it's reloaded.
-				(if	(= :vlax-true (vla-get-isxref bloc))
-					(vla-reload (vla-item (vla-get-Blocks axdoc)
-										  (eval (vla-get-Name bloc))))
-				)
-			)
+			(setq axdoc (getaxdbdoc (strcat dir f)))
+			(vla-purgeall axdoc)
 			(vla-saveas axdoc (strcat dir f))
 			(vlax-release-object axdoc)
         )
