@@ -23,7 +23,7 @@
 |;
 ;Dependencies
 (vl-load-com)
-(load "fct.lsp")
+;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_dxf2dwg (/ axdoc lfil dir)
         ; Choose folder.
@@ -32,9 +32,12 @@
               lfil (vl-directory-files dir "*.dxf" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			(setq axdoc (getaxdbdoc (strcat dir f)))
-			(vla-saveas axdoc (strcat dir (vl-string-subst ".dwg" ".dxf" f)))
-			(vlax-release-object axdoc)
+		  (if(setq axdoc (getaxdbdoc (strcat dir f)))
+			(progn
+				(vla-saveas axdoc (strcat dir (vl-string-subst ".dwg" ".dxf" f)))
+				(vlax-release-object axdoc)
+			)
+		  )
         )
     )
 (princ)

@@ -4,6 +4,50 @@
 ;;;tapper f2t pour traiter le dessin courant ou f2tindir pour traiter un dossier
 ;;;Converti les Textes, Mtextes, repères, repères multiples, cotations, Attributs et tableaux
 ;;;dans chaques présentations et les blocks
+; ANSI-Windows 1252
+; Autolisp, Visual Lisp
+;|
+    odbx_field2txt.lsp 1.0
+
+    Conversion of fields to texts.
+
+    Place the files, odbx_field2txt.lsp and odbx_fct.lsp, in an Autocad approved folder.
+
+    Use APPLOAD to load odbx_purge.lsp and odbx_fct.lsp.
+
+    Enter odbx_field2txt in Autocad and choose folder.
+
+    Drawings are not open.
+
+    PLEASE NOTE, there is no going back.
+
+    Tested on Windows 10 and Autocad 2015.
+
+    No copyright: (!) 2021 by Frédéric Coulon.
+    No license: Do with it what you want.
+
+|;
+;Dependencies
+(vl-load-com)
+(load "fct.lsp")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun c:odbx_field2txt (/ axdoc lfil dir)
+        ; Choose folder.
+    (if (setq dir (getdir) 
+              ; dwg liste.
+              lfil (vl-directory-files dir "*.dwg" 1)) 
+        ; Loop over files.
+        (foreach f lfil 
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+                (field2txt axdoc)
+            )
+			(vla-saveas axdoc (strcat dir f))
+			(vlax-release-object axdoc)
+        )
+    )
+(princ)
+)
+
 (defun field2txt ( acdc / delfield getconstantatt)
     (defun delfield (ob / objname objlay lays dic ind atts lconst ctc ctr)
         (setq objname (vla-get-objectname ob) 
@@ -104,18 +148,9 @@
     )
 );fin field2txt
 ;Commande pour dessin courant
-(defun c:f2t (/ ac) (field2txt (setq ac (vla-get-activedocument (vlax-get-acad-object)))) (vla-Regen ac acAllViewports)(princ))
-;Commande pour dossier (non récursif)
-(defun c:f2tindir ( / dir lf axdbdoc) 
-    (and (setq dir (getdir))
-         (setq lf (vl-directory-files dir "*.dwg" 1))
-         (foreach f lf
-            (if (setq axdbdoc (gc:getaxdbdoc (strcat dir f)))
-                (field2txt axdbdoc)
-            )
-            (vla-saveas axdbdoc (strcat dir f))
-            (vlax-release-object axdbdoc)
-         )
-    )
-    (princ)
+(defun c:f2t (/ ac) 
+    (field2txt (setq ac (vla-get-activedocument (vlax-get-acad-object)))) 
+	(vla-Regen ac acAllViewports)
+	(princ)
 )
+

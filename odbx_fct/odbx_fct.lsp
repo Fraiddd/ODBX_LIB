@@ -7,7 +7,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    :No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
+    :No copyright: (!) 2021 by Fr?d?ric Coulon.
     :No license: Do with it what you want.
 |;
 ; Dependencies
@@ -43,7 +43,7 @@
     axdbdoc
   )
 )
-;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun getaxdbdocdxf (filename / axdbdoc release)
   (setq axdbdoc
      (vlax-create-object

@@ -23,7 +23,7 @@
 |;
 ;Dependencies
 (vl-load-com)
-(load "fct.lsp")
+;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_dtxref (/ axdoc lfil dir)
         ; Choose folder.
@@ -36,8 +36,7 @@
 			(vlax-for bloc (vla-get-blocks (setq axdoc (getaxdbdoc (strcat dir f))))
 				; If the block is an xref, it's detached.
 				(if	(= :vlax-true (vla-get-isxref bloc))
-					(vla-detach (vla-item (vla-get-Blocks axdoc)
-										  (eval (vla-get-Name bloc))))
+					(vla-delete bloc)
 				)
 			)
 			(vla-saveas axdoc (strcat dir f))

@@ -23,7 +23,7 @@
 |;
 ;Dependencies
 (vl-load-com)
-(load "fct.lsp")
+;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_purge (/ axdoc lfil dir)
         ; Choose folder.
@@ -32,14 +32,21 @@
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			(setq axdoc (getaxdbdoc (strcat dir f)))
-			(vla-purgeall axdoc)
-			(vla-saveas axdoc (strcat dir f))
-			(vlax-release-object axdoc)
+			(if(setq axdoc (getaxdbdoc (strcat dir f)))
+			  (progn
+				(vlax-dump-object axdoc T)
+				(vla-saveas axdoc (strcat dir f))
+				(vlax-release-object axdoc)
+			  )
+			)
         )
     )
 (princ)
 )
+;(defun purgeall ( doc / )
 
+
+
+;)
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
