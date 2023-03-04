@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_dump.lsp 1.0
+    odbx_dtole.lsp 1.0
 
-    To know the applicable properties and methods of ObjectDBX.
+    Detach OLE from drawings contained in a folder.
 
-    Place the files, odbx_dump.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_dtole.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load odbx_dump.lsp and odbx_fct.lsp.
+    Use APPLOAD to load it.
 
-    Enter odbx_dump in Autocad and choose folder.
+    Enter odbx_dtole in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,18 +25,25 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_dump (/ axdoc lfil dir)
+(defun c:odbx_dtole (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-            (if(setq axdoc (getaxdbdoc (strcat dir f)))
-					(vlax-dump-object axdoc t)
-                (vlax-release-object axdoc)
-              
-            )
+			(if (setq axdoc (getaxdbdoc (strcat dir f)))
+			  (progn
+				; Loop over objects.
+				(vlax-for obj (vla-get-modelspace axdoc)
+					(if (= (vla-get-objectname obj) "AcDbOle2Frame")
+						(vla-delete obj)
+					)
+				)
+				(vla-saveas axdoc (strcat dir f))
+				(vlax-release-object axdoc)
+			  )
+			)
         )
     )
 (princ)

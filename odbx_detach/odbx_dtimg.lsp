@@ -7,7 +7,7 @@
 
     Place the files, odbx_dtimg.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load odbx_dtimg.lsp and odbx_fct.lsp.
+    Use APPLOAD to load them.
 
     Enter odbx_dtimg in Autocad and choose folder.
 
@@ -26,7 +26,7 @@
 |;
 ;Dependencies
 (vl-load-com)
-(load "fct.lsp")
+;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_dtimg (/ axdoc lfil dir)
         ; Choose folder.
@@ -35,23 +35,26 @@
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-            ; Loop over objects.
-            (vlax-for obj (vla-get-modelspace
-                          (setq axdoc (getaxdbdoc (strcat dir f))))
-                ; If the object is an image.
-                (if (= (vla-get-objectname obj) "AcDbRasterImage")
-                    ; Delete it from the dictionary "ACAD_IMAGE_DICT".
-                    (vla-delete 
-                        (vla-item 
-                            (vla-item (vla-get-dictionaries axdoc )
-                                      "ACAD_IMAGE_DICT") 
-                            (vla-get-name obj)
-                        )
-                    ) 
-                )
-            )
-            (vla-saveas axdoc (strcat dir f))
-            (vlax-release-object axdoc)
+			(if (setq axdoc (getaxdbdoc (strcat dir f)))
+			  (progn
+				; Loop over objects.
+				(vlax-for obj (vla-get-modelspace axdoc)
+					; If the object is an image.
+					(if (= (vla-get-objectname obj) "AcDbRasterImage")
+						; Delete it from the dictionary "ACAD_IMAGE_DICT".
+						(vla-delete 
+							(vla-item 
+								(vla-item (vla-get-dictionaries axdoc )
+										  "ACAD_IMAGE_DICT") 
+								(vla-get-name obj)
+							)
+						) 
+					)
+				)
+				(vla-saveas axdoc (strcat dir f))
+				(vlax-release-object axdoc)
+			  )
+			)
         )
     )
 (princ)

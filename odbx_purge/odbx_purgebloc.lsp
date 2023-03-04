@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_purgelayer.lsp 1.0
+    odbx_purgebloc.lsp 1.0
 
-    Removes empty layers from the documents. (except "0" and current)
+    Purge blocks.
 
-    Place the files, odbx_purgelayer.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_purgebloc.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
 
-    Enter odbx_purgelayer in Autocad and choose folder.
+    Enter odbx_purgebloc in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,19 +25,18 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_purgelayer (/ axdoc lfil dir)
+(defun c:odbx_purgebloc (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+            (if(setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
-                ; Loop over lay
-                (vlax-for lay (vla-get-layers axdoc)
-                    ; Layers containing objects, "0" and current, raise an exception.
-                    (vl-catch-all-apply 'vla-delete (list lay))
+                ; Loop over blocks
+                (vlax-for bloc (vla-get-blocks axdoc)
+                    (vl-catch-all-apply 'vla-delete (list bloc))
                 )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)

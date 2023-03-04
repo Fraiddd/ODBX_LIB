@@ -56,3 +56,24 @@
   (vlax-invoke-method axdbdoc 'DxfIn filename)
 )
 
+;;;wcmember
+;;;Idem que member mais accepte les caractères génériques
+;;;dans le texte(str) et dans la liste de textes(liste)
+;;;la liste peu etre des listes imbriquées (récursif)
+;;;et contenir autre chose que des textes
+;;;Retourne T ou nil
+(defun wcmember ( str liste / ret)
+ (foreach item liste
+    (if (null ret)
+        (if (= (type item) 'LIST)
+            (setq ret (imp-wcmember str item))
+            (if (= (type item) 'STR)
+                (if (or (wcmatch str item)(wcmatch item str))
+                    (setq ret T)
+                )
+            )
+        )
+    )
+ )
+ ret
+)
