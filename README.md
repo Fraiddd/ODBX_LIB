@@ -7,7 +7,9 @@ This is perfect for batch processing dwgs.
 
 But limited, only Visual Lisp, only database, no access to Autocad variables.
 
-## The function that retrieves the ObjectDBX :
+  - 
+
+### The function that retrieves the ObjectDBX :
 
 ```
 (defun getaxdbdoc (filename / axdbdoc release)
@@ -26,28 +28,31 @@ But limited, only Visual Lisp, only database, no access to Autocad variables.
 )
 
 ```
-## Principle of use :
+### Principle of use :
 
 ```
 (defun c:<foo> (/ axdoc lfil dir)
     (if (setq dir (getdir)
               lfil (vl-directory-files dir "*.dwg" 1)) 
         (foreach f lfil 
-          (setq axdoc (getaxdbdoc (strcat dir f)))
-          (<dofoo> axdoc)
-          (vla-saveas axdoc (strcat dir f))
-          (vlax-release-object axdoc)
+          (if (setq axdoc (getaxdbdoc (strcat dir f)))
+            (progn
+              (<dofoo> axdoc)
+              (vla-saveas axdoc (strcat dir f))
+              (vlax-release-object axdoc)
+            )
+          )
         )
     )
 (princ)
 )
 ```
 
-## Dump ObjectDBX
+### Dump ObjectDBX
 
-With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and methods.
+With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and methods ObjectDBX.
 
-(Sorry for my French return)
+(Sorry for my french return)
 
 ```
 ; IAxDbDocument: Interface IAxDbDocument
@@ -91,7 +96,20 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 ```
 You can see that an exception has occurred at Application and SectionManager.
 
-## Root
+### Examples of use
+
+  #### Detacher
+
+    - odbx_dtimg 
+
+    - odbx_purge
+
+
+  #### Geter
+
+
+
+### Root
 
   http://www.theswamp.org/
 
