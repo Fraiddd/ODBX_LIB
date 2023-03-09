@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_dtxref.lsp 1.0
+    odbx_dtcloud.lsp 1.0
 
-    Detach XREF from drawings contained in a folder.
+    Detach point Clouds from drawings contained in a folder.
 
-    Place the files, odbx_dtxref.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_dtcloud.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load them.
+    Use APPLOAD to load it.
 
-    Enter odbx_dtxref in Autocad and choose folder.
+    Enter odbx_dtcloud in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_dtxref (/ axdoc lfil dir)
+(defun c:odbx_dtcloud (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
@@ -34,21 +34,20 @@
         (foreach f lfil 
 			(if (setq axdoc (getaxdbdoc (strcat dir f)))
 			  (progn
-
+				; Loop over objects.
+				(vlax-for obj (vla-get-modelspace axdoc)
+					(if (= (vla-get-objectname obj) "AcDbPointCloudEx")
+						(vla-delete obj)
+					)
+				)
 				(vlax-for di (vla-get-dictionaries axdoc)
-					(if (= (vl-catch-all-apply 'vla-get-name (list di))
-							"ACAD_DATALINK")
+					(if (eq (vl-catch-all-apply 'vla-get-name (list di))
+							"ACAD_POINTCLOUD_EX_DICT")
 						(vlax-for d di
-							(vl-catch-all-apply 'vla-delete (list d))
+							(vla-delete d)
 						)
 					)
 				)
-				(vlax-for bloc (vla-get-blocks axdoc)
-					(if (= (vla-get-IsXRef bloc) :vlax-true)
-						(vl-catch-all-apply 'vla-delete (list bloc))
-					)
-                )
-
 				(vla-saveas axdoc (strcat dir f))
 				(vlax-release-object axdoc)
 			  )
