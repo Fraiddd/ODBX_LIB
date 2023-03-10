@@ -32,7 +32,7 @@
               lfil (vl-directory-files dir "*.dxf" 1)) 
         ; Loop over files.
         (foreach f lfil 
-		  (if(setq axdoc (getaxdbdoc (strcat dir f)))
+		  (if(setq axdoc (getaxdbdocdxf (strcat dir f)))
 			(progn
 				(vla-saveas axdoc (strcat dir (vl-string-subst ".dwg" ".dxf" f)))
 				(vlax-release-object axdoc)

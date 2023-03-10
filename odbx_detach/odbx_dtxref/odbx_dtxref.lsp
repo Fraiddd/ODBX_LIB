@@ -43,11 +43,6 @@
 						)
 					)
 				)
-				(vlax-for bloc (vla-get-blocks axdoc)
-					(if (= (vla-get-IsXRef bloc) :vlax-true)
-						(vl-catch-all-apply 'vla-delete (list bloc))
-					)
-                )
 
 				(vla-saveas axdoc (strcat dir f))
 				(vlax-release-object axdoc)
@@ -59,4 +54,8 @@
 )
 
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(defun getdic (/)
+	(vlax-for di (vla-GetExtensionDictionary (vlax-ename->vla-object (car (entsel))))
+		(princ (vla-get-name di))
+	)
+)

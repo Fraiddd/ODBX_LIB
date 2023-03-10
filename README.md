@@ -3,9 +3,11 @@
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' 
 a standalone application that can load and manipulate drawings.
 
+
+
 This is perfect for batch processing dwgs.
 
-But limited, only Visual Lisp, only database, no access to Autocad variables.
+But limited:
 
   - 
 
@@ -52,12 +54,11 @@ But limited, only Visual Lisp, only database, no access to Autocad variables.
 
 With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and methods ObjectDBX.
 
-(Sorry for my french return)
 
 ```
-; IAxDbDocument: Interface IAxDbDocument
-; Valeurs de propriétés:
-;   Application (RO) = Une exception s’est produite
+; IAxDbDocument: IAxDbDocument Interface
+; Property values:
+;   Application (RO) = Exception occurred
 ;   Blocks (RO) = #<VLA-OBJECT IAcadBlocks 0000016a1a216918>
 ;   Database (RO) = #<VLA-OBJECT IAcadDatabase 0000016a2b9483d8>
 ;   Dictionaries (RO) = #<VLA-OBJECT IAcadDictionaries 0000016a1a2167f8>
@@ -77,13 +78,13 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 ;   PlotConfigurations (RO) = #<VLA-OBJECT IAcadPlotConfigurations 0000016a1a2186e8>
 ;   Preferences (RO) = #<VLA-OBJECT IAcadDatabasePreferences 0000016a29b206a8>
 ;   RegisteredApplications (RO) = #<VLA-OBJECT IAcadRegisteredApplications 0000016a1a217698>
-;   SectionManager (RO) = Une exception s’est produite
+;   SectionManager (RO) = Exception occurred
 ;   SummaryInfo (RO) = #<VLA-OBJECT IAcadSummaryInfo 0000016a2b70fe08>
 ;   TextStyles (RO) = #<VLA-OBJECT IAcadTextStyles 0000016a1a2184a8>
 ;   UserCoordinateSystems (RO) = #<VLA-OBJECT IAcadUCSs 0000016a1a218268>
 ;   Viewports (RO) = #<VLA-OBJECT IAcadViewports 0000016a1a217728>
 ;   Views (RO) = #<VLA-OBJECT IAcadViews 0000016a1a217b18>
-; Méthodes prises en charge:
+; Methods supported:
 ;   CopyObjects (3)
 ;   DxfIn (2)
 ;   DxfOut (3)
@@ -97,19 +98,18 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 You can see that an exception has occurred at Application and SectionManager.
 
 ### Examples of use
-
-  #### Detacher
-
+  
     - odbx_dtimg 
 
     - odbx_purge
 
 
-  #### Geter
 
 
 
 ### Root
+
+  The Visual LISP Devepors Bible - 2011 Edition Chapter 14
 
   http://www.theswamp.org/
 
