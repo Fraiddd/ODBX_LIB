@@ -109,7 +109,7 @@ You can see that an exception has occurred at Application and SectionManager.
 
 ### Root
 
-  The Visual LISP Devepors Bible - 2011 Edition Chapter 14
+  The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein
 
   http://www.theswamp.org/
 

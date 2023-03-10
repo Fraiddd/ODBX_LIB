@@ -7,7 +7,7 @@
 
     Place the files, odbx_dump.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
-    Use APPLOAD to load odbx_dump.lsp and odbx_fct.lsp.
+    Use APPLOAD to load it.
 
     Enter odbx_dump in Autocad and choose folder.
 
@@ -17,7 +17,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    No copyright: (!) 2021 by Frédéric Coulon.
+    No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
     No license: Do with it what you want.
 
 |;
@@ -42,5 +42,5 @@
 (princ)
 )
 
-;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ï¿½;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
