@@ -36,15 +36,16 @@
 			(if (setq axdoc (getaxdbdoc (strcat dir f)))
 			  (progn
 				(setq objlst '())
+				; 
 				(vlax-for obj (vla-get-modelspace axdoc)
 					(setq objlst (cons obj objlst))			
 				)
 				(if objlst
 				  (progn
 					(vla-copyobjects axdoc (vlax-safearray-fill
-												(vlax-make-safearray vlax-vbobject(cons 0 (1- (length objlst))))
-												objlst)
-										   model)
+						(vlax-make-safearray vlax-vbobject(cons 0 (1- (length objlst))))
+						objlst)
+						model)
 					(vla-saveas axdoc (strcat dir f))
 					(vlax-release-object axdoc)
 				  )

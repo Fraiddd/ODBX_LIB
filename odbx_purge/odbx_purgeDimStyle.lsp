@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_purgebloc.lsp 1.0
+    odbx_purgeDimStyle.lsp 1.0
 
-    Purge blocks.
+    Removes DimStyles not used.
 
-    Place the files, odbx_purgebloc.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_purgeDimStyle.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
 
-    Enter odbx_purgebloc in Autocad and choose folder.
+    Enter odbx_purgeDimStyle in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,25 +25,19 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_purgebloc (/ axdoc lfil dir)
+(defun c:odbx_purgeDimStyle (/ axdoc lfil dir)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-            (if(setq axdoc (getaxdbdoc (strcat dir f)))
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
-				(setq u 0)
-                ; Loop over blocks while a block was deleted
-				(while (= u 0)
-					(setq u 1)
-					(vlax-for bloc (vla-get-blocks axdoc)
-						(if (not (vl-catch-all-error-p (vl-catch-all-apply 'vla-delete (list bloc))))
-							(setq u 0)
-						)
-					)
-				)
+                ; Loop over DimStyles
+                (vlax-for ds (vla-get-DimStyles axdoc)
+                    (vl-catch-all-apply 'vla-delete (list ds))
+                )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
