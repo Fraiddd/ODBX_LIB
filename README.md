@@ -41,7 +41,7 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 ```
 ### Principle of use :
 
-    - Need [getdir](https://github.com/Fraiddd/ODBX_LIB/tree/main/odbx_fct) function
+    - Need [getdir](https://github.com/Fraiddd/ODBX_LIB/tree/main/odbx_fct/odbx_fct.lsp) function
 
 ```
 (defun c:<foo> (/ axdoc lfil dir)
