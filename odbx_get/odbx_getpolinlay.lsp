@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_getmodel.lsp 1.0
+    odbx_getpolinlay.lsp 1.0
 
-	Copy all objects in Model space, and paste in current dwg.
+	Copy all Polylines in a layer, and paste in current dwg.
 
-    Place the files, odbx_getmodel.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_getpolinlay.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
 
-    Enter odbx_getmodel in Autocad and choose folder.
+    Enter odbx_getpolinlay in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -25,22 +25,27 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_getmodel (/ axdoc lfil dir objlst model)
+(defun c:odbx_getpolinlay (/ axdoc lfil dir objlst model lay)
 	(setq acobj (vlax-get-acad-object)
-		  model (vla-get-modelspace (vla-get-activedocument acobj)))
+		  model (vla-get-modelspace (vla-get-activedocument acobj))
+		  lay (getstring "What layer?")
+	)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
-	  (progn
         ; Loop over files.
+	  (progn
         (foreach f lfil 
 			(if (setq axdoc (getaxdbdoc (strcat dir f)))
 			  (progn
 				(setq objlst '())
-				; Get the objects
+				; Sorting objects.
 				(vlax-for obj (vla-get-modelspace axdoc)
-					(setq objlst (cons obj objlst))			
+					(and (= (vla-get-ObjectName obj) "AcDbPolyline")
+						 (= (vla-get-layer obj) lay)
+						 (setq objlst (cons obj objlst))
+					)
 				)
 				(if objlst
 				  (progn
@@ -52,7 +57,7 @@
 					(vlax-release-object axdoc)
 				  )
 			    )
-			   )
+			  )
             )
         )
 		(vla-zoomextents acobj)
