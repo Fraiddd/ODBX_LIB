@@ -13,8 +13,6 @@
 
     Drawings are not open.
 
-    PLEASE NOTE, there is no going back.
-
     Tested on Windows 10 and Autocad 2015.
 
     No copyright: (!) 2021 by Frédéric Coulon.

@@ -41,7 +41,7 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 ```
 ### Principle of use :
 
-    - Need [getdir](https://github.com/Fraiddd/ODBX_LIB/tree/main/odbx_fct/odbx_fct.lsp) function
+    - Need getdir function in odbx_fct.lsp
 
 ```
 (defun c:<foo> (/ axdoc lfil dir)
@@ -126,8 +126,10 @@ You can see that an exception has occurred at Application and SectionManager.
 
   The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein
 
-  http://www.theswamp.org/
+  Special thanks for Patrick35, Gile and Lee Mac.
 
-  https://cadxp.com/
+   - http://www.theswamp.org/
+
+   - https://cadxp.com/
 
   
