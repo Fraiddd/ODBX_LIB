@@ -1,5 +1,5 @@
 # ObjectDBX
-
+![](./illu/odbx.png)
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' a standalone application that can load and manipulate drawings.
 ObjectDBX is a subset of ObjectARX and a C++ object‐oriented API for manipulating AutoCAD and its related objects, collections, properties, methods.
 This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it' limited.
@@ -14,7 +14,10 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 
   
 
-### The function that retrieves the ObjectDBX :
+### The function in Visual-Lisp that retrieves the ObjectDBX :
+
+    - Argument: String, The complet path of the dwg.
+    - Return: a VLA object, drawing object
 
 ```
 (defun getaxdbdoc (filename / axdbdoc release)
@@ -35,15 +38,21 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 ```
 ### Principle of use :
 
+    - Need [getdir](https://github.com/Fraiddd/ODBX_LIB/tree/main/odbx_fct) function
+
 ```
 (defun c:<foo> (/ axdoc lfil dir)
+        ; Choose folder.
     (if (setq dir (getdir)
               lfil (vl-directory-files dir "*.dwg" 1)) 
         (foreach f lfil 
           (if (setq axdoc (getaxdbdoc (strcat dir f)))
             (progn
+              ; This is where you do what you want.
               (<dofoo> axdoc)
+              ; If you modify the document.
               (vla-saveas axdoc (strcat dir f))
+              ; Releases a drawing object
               (vlax-release-object axdoc)
             )
           )
