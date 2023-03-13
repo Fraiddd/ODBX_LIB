@@ -1,5 +1,8 @@
 # ObjectDBX
+
 ![](./illu/odbx.png)
+
+
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' a standalone application that can load and manipulate drawings.
 ObjectDBX is a subset of ObjectARX and a C++ object‐oriented API for manipulating AutoCAD and its related objects, collections, properties, methods.
 This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it' limited.
@@ -85,7 +88,7 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 ;   Linetypes (RO) = #<VLA-OBJECT IAcadLineTypes 0000016a1a216d98>
 ;   Materials (RO) = #<VLA-OBJECT IAcadMaterials 0000016a1a2173c8>
 ;   ModelSpace (RO) = #<VLA-OBJECT IAcadModelSpace 0000016a29c2d378>
-;   Name = "C:\\Data\\TMP\\dwg\\321000AV01.dwg"
+;   Name = "C:\\Data\\TMP\\dwg\\test.dwg"
 ;   PaperSpace (RO) = #<VLA-OBJECT IAcadPaperSpace 0000016a29c2c658>
 ;   PlotConfigurations (RO) = #<VLA-OBJECT IAcadPlotConfigurations 0000016a1a2186e8>
 ;   Preferences (RO) = #<VLA-OBJECT IAcadDatabasePreferences 0000016a29b206a8>
