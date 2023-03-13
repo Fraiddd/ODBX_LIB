@@ -114,19 +114,13 @@ You can see that an exception has occurred at Application and SectionManager.
 
 ### Examples of use
   
-    - odbx_dtimg 
-
-    - odbx_purge
-
-
-
-
+    Some simple examples have been deposited here, do not hesitate to search.
 
 ### Root
 
-  The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein
+  The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein.
 
-  Special thanks for Patrick35, Gile and Lee Mac.
+  Special thanks for Patrick_35, Gile and Lee Mac.
 
    - http://www.theswamp.org/
 
