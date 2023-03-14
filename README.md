@@ -5,7 +5,7 @@
 
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' a standalone application that can load and manipulate drawings.
 ObjectDBX is a subset of ObjectARX and a C++ object‐oriented API for manipulating AutoCAD and its related objects, collections, properties, methods.
-This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it' limited.
+This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it's limited.
 
     - No access to System Variables (getvar ...)
 
@@ -41,7 +41,7 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 ```
 ### Principle of use :
 
-    - Need getdir function in odbx_fct.lsp
+Need getdir function in odbx_fct.lsp
 
 ```
 (defun c:<foo> (/ axdoc lfil dir)
