@@ -17,7 +17,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
+    No copyright: (!) 2021 by Frédéric Coulon.
     No license: Do with it what you want.
 
 |;
@@ -48,5 +48,5 @@
 (princ)
 )
 
-;ï¿½;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
