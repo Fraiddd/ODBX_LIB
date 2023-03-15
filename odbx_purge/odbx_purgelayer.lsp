@@ -3,7 +3,7 @@
 ;|
     odbx_purgelayer.lsp 1.0
 
-    Removes empty layers from the documents. (except "0" and current)
+    Removes empty layers from the documents. (except "0", locked layers and current)
 
     Place the files, odbx_purgelayer.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
@@ -17,7 +17,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    No copyright: (!) 2021 by Frédéric Coulon.
+    No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
     No license: Do with it what you want.
 
 |;
@@ -36,7 +36,7 @@
               (progn
                 ; Loop over lay
                 (vlax-for lay (vla-get-layers axdoc)
-                    ; Layers containing objects, "0" and current, raise an exception.
+                    ; Layers containing objects, "0", locked layer and current, raise an exception.
                     (vl-catch-all-apply 'vla-delete (list lay))
                 )
                 (vla-saveas axdoc (strcat dir f))
@@ -48,5 +48,5 @@
 (princ)
 )
 
-;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ï¿½;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
