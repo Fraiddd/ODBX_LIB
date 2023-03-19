@@ -23,9 +23,8 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_getnbblock (/ axdoc lfil dir objlst model bloc tot stot)
-	(setq model (vla-get-modelspace (vla-get-activedocument (vlax-get-acad-object)))
-		  bloc (getstring "What Block?")
+(defun c:odbx_getnbblock (/ axdoc lfil dir objlst bloc tot stot)
+	(setq bloc (getstring "What Block?")
 		  tot 0
 	)
         ; Choose folder.
