@@ -1,15 +1,15 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_substatt.lsp 1.0
+    odbx_substtext.lsp 1.0
 
-	Count the number of blocks.
+	Replace a text in a text in the model space.
 
-    Place the files, odbx_substatt.lsp and odbx_fct.lsp, in an Autocad approved folder.
+    Place the files, odbx_substtext.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
 
-    Enter odbx_substatt in Autocad and choose folder.
+    Enter odbx_substtext in Autocad and choose folder.
 
     Drawings are not open.
 
@@ -23,7 +23,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_substatt (/ axdoc lfil dir old new tat)
+(defun c:odbx_substtext (/ axdoc lfil dir old new text flag)
 	(setq old (getstring "Old text?")
 		  new (getstring "New text?")
 	)
@@ -37,21 +37,22 @@
 			  (progn
 			    ; Loop over objects in model space.
 				(vlax-for obj (vla-get-modelspace axdoc)
-				    ; If it's a block.
-					(if (= (vla-get-ObjectName obj) "AcDbBlockReference")
-					  ; Loop over eventuals attributs
-					  (foreach att (vlax-invoke obj 'GetAttributes)
-						(if (vl-string-search old (setq tat (vla-get-textstring att)))
-							(vlax-put att 'TextString (vl-string-subst new old tat))
-						)
-					   )
+				    ; If it's a text.
+					(if (and (= (vla-get-ObjectName obj) "AcDbText")
+						 (vl-string-search old (setq text (vla-get-textstring obj)))
+						 )
+						 (progn
+						   (vlax-put obj 'TextString (vl-string-subst new old text))
+						   (setq flag 1)
+						 )
 					)
 				)
-				(vla-saveas axdoc (strcat dir f))
-				(vlax-release-object axdoc)
+				(if flag (progn (vla-saveas axdoc (strcat dir f))
+								(vlax-release-object axdoc))
+			    )
 			  )
-			 
             )
+			(setq flag nil)
 	    )
 	)
 (princ)
