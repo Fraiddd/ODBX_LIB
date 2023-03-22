@@ -3,7 +3,7 @@
 ;|
     odbx_substatt.lsp 1.0
 
-	Replace a text attribut in objet model.
+	Count the number of blocks.
 
     Place the files, odbx_substatt.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
