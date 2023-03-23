@@ -25,7 +25,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_delgroup (/ axdoc lfil dir)
+(defun c:odbx_delgroup (/ axdoc lfil dir u)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
