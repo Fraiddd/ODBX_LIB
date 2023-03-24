@@ -118,7 +118,7 @@ You can see that an exception has occurred at Application and SectionManager.
 
 ### Root
 
-  The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein.
+  [The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein.](./odbx_root/the-visual-lisp-developers-bible-2011-edition.pdf)
 
   Special thanks for Patrick_35, Gile and Lee Mac.
 
