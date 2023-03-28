@@ -120,7 +120,7 @@ You can see that an exception has occurred at Application and SectionManager.
 
   [The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein.](./odbx_root/the-visual-lisp-developers-bible-2011-edition.pdf)
 
-  [](odbx_root/odbx_Michael_Puckett.lsp)
+  [Michael_Puckett](odbx_root/odbx_Michael_Puckett.lsp)
 
   Special thanks for Patrick_35, Gile and Lee Mac.
 
