@@ -113,6 +113,7 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 You can see that an exception has occurred at Application and SectionManager.
 
 ### Examples of use
+
 - Geters
 
   [odbx_getmodel](odbx_get/odbx_getmodel.lsp) , Copy all objects in Model space, and paste in current dwg.
@@ -122,14 +123,57 @@ You can see that an exception has occurred at Application and SectionManager.
   [odbx_getnbblock](./odbx_get/odbx_getnbblock.lsp), Count the number of blocks.
 
   [odbx_getdwgpolxdata](./odbx_get/odbx_getdwgpolxdata.lsp), Returns the list of DWGs that contains a polyline with XDATA.
-  
+
   [odbx_getlengpolinlay](./odbx_get/odbx_getlengpolinlay.lsp), Get the length of Polylines in a layer.
+
+- Substitutes
+
+  [odbx_substtext](odbx_subst/odbx_substtext.lsp) , Replace a text in a TEXT in the model space.
+
+  [odbx_substmtext](odbx_subst/odbx_substmtext.lsp) , Replace a text in a MTEXT in the model space.
+
+  [odbx_substmlead](odbx_subst/odbx_substmlead.lsp) , Replace a text in a MLEADER in the model space.
+
+  [odbx_substatt](odbx_subst/odbx_substatt.lsp) , Replace a text in a ATTRIBUT in the model space.
+
+- Deletes
+
+  [odbx_delobjinlay](odbx_del/odbx_delobjinlay.lsp) , Delete all objects in a layer and purge layers.
+
+  [odbx_delgroup](odbx_del/odbx_delgroup.lsp) , Delete all groups (not objects in groups).
+
+  [odbx_delfilterlayer](odbx_del/odbx_delfilterlayer.lsp) , Delete filter and state layers.
+
+- Detachs
+
+  [odbx_dtcloud](odbx_detach/odbx_dtcloud.lsp) , Detach point Clouds.
+
+  [odbx_dtdgn](odbx_detach/odbx_dtdgn.lsp) , Detach .dgn.
+
+  [odbx_dtdwf](odbx_detach/odbx_dtdwf.lsp) , Detach .dwf.
+
+  [odbx_dtimg](odbx_detach/odbx_dtimg.lsp) , Detach images.
+
+  [odbx_dtole](odbx_detach/odbx_dtole.lsp) , Detach OLE object.
+
+  [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf.
+
+- Purges
+
+  [odbx_purgebloc](odbx_purge/odbx_purgebloc.lsp) , Purge blocks.
+
+  [odbx_purgeDimStyle](odbx_purge/odbx_purgeDimStyle.lsp) , Purge DimStyles.
+
+
+
+
+
 
 ### Root
 
   [The Visual LISP Devepors Bible - 2011 Edition Chapter 14 By David M.Stein.](./odbx_root/the-visual-lisp-developers-bible-2011-edition.pdf)
 
-  [Michael_Puckett](odbx_root/odbx_Michael_Puckett.lsp)
+  An experience of [Michael_Puckett](odbx_root/odbx_Michael_Puckett.lsp)
 
   Special thanks for Patrick_35, Gile and Lee Mac.
 
