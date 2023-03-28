@@ -35,26 +35,26 @@
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			(if (setq axdoc (getaxdbdoc (strcat dir f)))
-			  (progn
-				; Loop over objects.
-				(vlax-for obj (vla-get-modelspace axdoc)
-					; If the object is an image.
-					(if (= (vla-get-objectname obj) "AcDbRasterImage")
-						; Delete it from the dictionary "ACAD_IMAGE_DICT".
-						(vla-delete 
-							(vla-item 
-								(vla-item (vla-get-dictionaries axdoc )
-										  "ACAD_IMAGE_DICT") 
-								(vla-get-name obj)
-							)
-						) 
-					)
-				)
-				(vla-saveas axdoc (strcat dir f))
-				(vlax-release-object axdoc)
-			  )
-			)
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+              (progn
+                ; Loop over objects.
+                (vlax-for obj (vla-get-modelspace axdoc)
+                    ; If the object is an image.
+                    (if (= (vla-get-objectname obj) "AcDbRasterImage")
+                        ; Delete it from the dictionary "ACAD_IMAGE_DICT".
+                        (vla-delete 
+                            (vla-item 
+                                (vla-item (vla-get-dictionaries axdoc )
+                                          "ACAD_IMAGE_DICT") 
+                                (vla-get-name obj)
+                            )
+                        ) 
+                    )
+                )
+                (vla-saveas axdoc (strcat dir f))
+                (vlax-release-object axdoc)
+              )
+            )
         )
     )
 (princ)
