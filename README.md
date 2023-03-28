@@ -113,13 +113,12 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 You can see that an exception has occurred at Application and SectionManager.
 
 ### Examples of use
-  
-    - Geters
-        [odbx_getmodel](./odbx_get/odbx_getmodel.lsp), Copy all objects in Model space, and paste in current dwg
-        [odbx_getpolinlay](./odbx_get/odbx_getpolinlay.lsp), Copy all Polylines in a layer, and paste in current dwg.
-        [odbx_getnbblock](./odbx_get/odbx_getnbblock.lsp), Count the number of blocks.
-        [odbx_getdwgpolxdata](./odbx_get/odbx_getdwgpolxdata.lsp), Returns the list of DWGs that contains a polyline with XDATA.
-        [odbx_getlengpolinlay](./odbx_get/odbx_getlengpolinlay.lsp), Get the length of Polylines in a layer.
+- Geters
+  [odbx_getmodel](odbx_get/odbx_getmodel.lsp) , Copy all objects in Model space, and paste in current dwg
+  [odbx_getpolinlay](./odbx_get/odbx_getpolinlay.lsp), Copy all Polylines in a layer, and paste in current dwg.
+  [odbx_getnbblock](./odbx_get/odbx_getnbblock.lsp), Count the number of blocks.
+  [odbx_getdwgpolxdata](./odbx_get/odbx_getdwgpolxdata.lsp), Returns the list of DWGs that contains a polyline with XDATA.
+  [odbx_getlengpolinlay](./odbx_get/odbx_getlengpolinlay.lsp), Get the length of Polylines in a layer.
 
 ### Root
 
