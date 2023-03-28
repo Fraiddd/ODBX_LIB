@@ -23,7 +23,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
-(defun c:odbx_getdwgpolxdata (/ axdoc lfil dir objlst apli val)
+(defun c:odbx_getdwgpolxdata (/ axdoc lfil dir apli val)
     (setq apli (getstring "What API")
            val (getstring "What Value")
     )
