@@ -5,7 +5,7 @@
 
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' a standalone application that can load and manipulate drawings.
 ObjectDBX is a subset of ObjectARX and a C++ object‐oriented API for manipulating AutoCAD and its related objects, collections, properties, methods.
-This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it's limited, using accoreconsole.exe is preferable.
+This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it's limited, using accoreconsole.exe is complementary.
 
     - No access to System Variables (getvar ...)
 
@@ -20,6 +20,7 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 ### The function in Visual-Lisp that retrieves the ObjectDBX :
 
     - Argument: String, The complet path of the dwg.
+
     - Return: a VLA object, drawing object
 
 ```
@@ -162,11 +163,17 @@ You can see that an exception has occurred at Application and SectionManager.
 
   [odbx_purgebloc](odbx_purge/odbx_purgebloc.lsp) , Purge blocks.
 
-  [odbx_purgeDimStyle](odbx_purge/odbx_purgeDimStyle.lsp) , Purge DimStyles.
+  [odbx_purgeDimStyle](odbx_purge/odbx_purgeDimStyle.lsp) , Purge Dimension Styles.
 
+  [odbx_purgelayer](odbx_purge/odbx_purgelayer.lsp) , Purge layers.
 
+  [odbx_purgelinetype](odbx_purge/odbx_purgelinetype.lsp) , Purge line types.
 
+  [odbx_purgeMLeaderStyle](odbx_purge/odbx_purgeMLeaderStyle.lsp) , Purge MLeader Styles.
 
+  [odbx_purgeTableStyle](odbx_purge/odbx_purgeTableStyle.lsp) , Purge Table Styles.
+
+  [odbx_purgeTextStyle](odbx_purge/odbx_purgeTextStyle.lsp) , Purge Text Style.
 
 
 ### Root
