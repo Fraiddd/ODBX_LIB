@@ -17,7 +17,7 @@ This is perfect for batch processing of dwgs, especially for looking up informat
 
   
 
-### The function in Visual-Lisp that retrieves the ObjectDBX :
+### The function in Autolisp/Visual-Lisp that retrieves the ObjectDBX :
 
     - Argument: String, The complet path of the dwg.
 
@@ -111,9 +111,14 @@ With ``` (vlax-dump-object axdoc t) ``` , you know the applicable properties and
 ;   SaveAs (2)
 
 ```
+
+There are far fewer Methods supported than with an open document.
+
 You can see that an exception has occurred at Application and SectionManager.
 
 ### Examples of use
+
+I remind you that there is no possible return, and that it is advisable to save your work beforehand.
 
 - Geters
 
