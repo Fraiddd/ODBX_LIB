@@ -3,7 +3,7 @@
 ;|
     odbx_getdwgpolxdata.lsp 1.0
 
-    returns the list of DWGs that contains a polyline with XDATA.
+    Returns the list of DWGs that contains a polyline with XDATA.
 
     Place the files, odbx_getdwgpolxdata.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
