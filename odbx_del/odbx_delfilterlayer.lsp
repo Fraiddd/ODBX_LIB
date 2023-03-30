@@ -34,11 +34,11 @@
         (foreach f lfil 
             (if(setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
-				(vlax-for dic (vla-GetExtensionDictionary (vla-Get-Layers axdoc))
-					(vlax-for d dic
-						(vl-catch-all-apply 'vla-delete (list d ))
-					)
-				)
+                (vlax-for dic (vla-GetExtensionDictionary (vla-Get-Layers axdoc))
+                    (vlax-for d dic
+                        (vl-catch-all-apply 'vla-delete (list d ))
+                    )
+                )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
