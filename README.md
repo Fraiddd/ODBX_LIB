@@ -134,6 +134,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_getnamelayout](./odbx_get/odbx_getnamelayout.lsp), Get the name of layouts.
 
+  [odbx_getlistlayer](./odbx_get/odbx_getlistlayer.lsp), Get the name of layers.
+
 - Substitutes
 
   [odbx_substtext](odbx_subst/odbx_substtext.lsp) , Replace a text in a TEXT in the model space.
