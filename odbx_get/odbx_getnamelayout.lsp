@@ -33,6 +33,7 @@
         (foreach f lfil 
             (princ (strcat "\n" f ":"))
             (if (setq axdoc (getaxdbdoc (strcat dir f)))
+				; Loop over layouts.
                 (vlax-for layout (vla-get-layouts axdoc)
                     (setq name (vla-get-name layout))
                     (if (/= name "Model")

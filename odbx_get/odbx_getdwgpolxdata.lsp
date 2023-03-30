@@ -9,7 +9,7 @@
 
     Use APPLOAD to load them.
 
-    Enter odbx_getdwgpolxdata in Autocad and choose folder.
+    Enter odbx_getdwgpolxdata in Autocad, enter API and value of XDATA and choose folder.
 
     Drawings are not open.
 
@@ -23,7 +23,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
-(defun c:odbx_getdwgpolxdata (/ axdoc lfil dir apli val)
+(defun c:odbx_getdwgpolxdata (/ axdoc lfil dir apli val lstData ldwg)
     (setq apli (getstring "What API")
            val (getstring "What Value")
     )

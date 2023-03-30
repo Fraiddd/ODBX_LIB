@@ -3,7 +3,7 @@
 ;|
     odbx_getlengpolinlay.lsp 1.0
 
-	Get the length of Polylines in a layer.
+    Get the length of Polylines in a layer.
 
     Place the files, odbx_getlengpolinlay.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
@@ -23,44 +23,42 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_getlengpolinlay (/ axdoc lfil dir objlst model lay tot stot)
-	(setq model (vla-get-modelspace (vla-get-activedocument (vlax-get-acad-object)))
-		  lay (getstring "What layer?")
-		  tot 0
-	)
+(defun c:odbx_getlengpolinlay (/ axdoc lfil dir lay tot stot)
+    (setq lay (getstring "What layer?")
+          tot 0
+    )
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
-	  (progn
+      (progn
         (foreach f lfil 
-			(setq stot 0)
-			(if (setq axdoc (getaxdbdoc (strcat dir f)))
-			  (progn
-				(setq objlst '())
-				; Sorting objects.
-				(vlax-for obj (vla-get-modelspace axdoc)
-					(and (= (vla-get-ObjectName obj) "AcDbPolyline")
-						 (= (vla-get-layer obj) lay)
-						 (setq stot (+ stot (vla-get-length obj)))
-					)
-				)
-				(if (> stot 0)
-				  (progn
-					(princ (strcat "\n  " (vla-get-name axdoc)": " (rtos stot)))
-					(setq tot (+ tot stot))
-					(vlax-release-object axdoc)
-				  )
-				  (princ (strcat "\n  " (vla-get-name axdoc)": No Polylines"))
-			    )
-			  )
+            (setq stot 0)
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+              (progn
+                ; Sorting objects.
+                (vlax-for obj (vla-get-modelspace axdoc)
+                    (and (= (vla-get-ObjectName obj) "AcDbPolyline")
+                         (= (vla-get-layer obj) lay)
+                         (setq stot (+ stot (vla-get-length obj)))
+                    )
+                )
+                (if (> stot 0)
+                  (progn
+                    (princ (strcat "\n  " (vla-get-name axdoc)": " (rtos stot)))
+                    (setq tot (+ tot stot))
+                    (vlax-release-object axdoc)
+                  )
+                  (princ (strcat "\n  " (vla-get-name axdoc)": No Polylines"))
+                )
+              )
             )
         )
-		(princ (strcat "\n  Total length : " (rtos tot)))
-		(textscr)
-	  )
-	)
+        (princ (strcat "\n  Total length : " (rtos tot)))
+        (textscr)
+      )
+    )
 (princ)
 )
 

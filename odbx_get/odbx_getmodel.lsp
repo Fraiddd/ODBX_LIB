@@ -23,7 +23,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_getmodel (/ axdoc lfil dir objlst model)
+(defun c:odbx_getmodel (/ axdoc acobj lfil dir objlst model)
     (setq acobj (vlax-get-acad-object)
           model (vla-get-modelspace (vla-get-activedocument acobj)))
         ; Choose folder.
