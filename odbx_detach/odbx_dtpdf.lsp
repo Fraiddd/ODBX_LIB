@@ -3,7 +3,7 @@
 ;|
     odbx_dtpdf.lsp 1.0
 
-    Detach images from drawings contained in a folder.
+    Detach pdf from drawings contained in a folder.
 
     Place the files, odbx_dtpdf.lsp and odbx_fct.lsp, in an Autocad approved folder.
 

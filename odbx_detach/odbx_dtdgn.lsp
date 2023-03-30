@@ -32,26 +32,26 @@
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			(if (setq axdoc (getaxdbdoc (strcat dir f)))
-			  (progn
-				; Loop over objects.
-				(vlax-for obj (vla-get-modelspace axdoc)
-					(if (= (vla-get-objectname obj) "AcDbDgnReferencee")
-						(vla-delete obj)
-					)
-				)
-				(vlax-for di (vla-get-dictionaries axdoc)
-					(if (eq (vl-catch-all-apply 'vla-get-name (list di)) 
-							"ACAD_DGNDEFINITIONS")
-						(vlax-for d di
-							(vla-delete d)
-						)
-					)
-				)
-				(vla-saveas axdoc (strcat dir f))
-				(vlax-release-object axdoc)
-			  )
-			)
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+              (progn
+                ; Loop over objects.
+                (vlax-for obj (vla-get-modelspace axdoc)
+                    (if (= (vla-get-objectname obj) "AcDbDgnReferencee")
+                        (vla-delete obj)
+                    )
+                )
+                (vlax-for di (vla-get-dictionaries axdoc)
+                    (if (eq (vl-catch-all-apply 'vla-get-name (list di)) 
+                            "ACAD_DGNDEFINITIONS")
+                        (vlax-for d di
+                            (vla-delete d)
+                        )
+                    )
+                )
+                (vla-saveas axdoc (strcat dir f))
+                (vlax-release-object axdoc)
+              )
+            )
         )
     )
 (princ)
