@@ -3,7 +3,7 @@
 ;|
     odbx_purgeTableStyle.lsp 1.0
 
-    Removes DimStyles not used.
+    Removes Table Styles not used.
 
     Place the files, odbx_purgeTableStyle.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
@@ -35,14 +35,14 @@
             (if (setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
                 ; Loop over TableStyle
-				(vlax-for di (vla-get-dictionaries axdoc)
-					(if (= (vl-catch-all-apply 'vla-get-name (list di))
-							"ACAD_TABLESTYLE")
-						(vlax-for d di
-							(vl-catch-all-apply 'vla-delete (list d))
-						)
-					)
-				)
+                (vlax-for di (vla-get-dictionaries axdoc)
+                    (if (= (vl-catch-all-apply 'vla-get-name (list di))
+                            "ACAD_TABLESTYLE")
+                        (vlax-for d di
+                            (vl-catch-all-apply 'vla-delete (list d))
+                        )
+                    )
+                )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )

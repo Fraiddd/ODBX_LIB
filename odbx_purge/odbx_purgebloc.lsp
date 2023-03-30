@@ -25,7 +25,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_purgebloc (/ axdoc lfil dir)
+(defun c:odbx_purgebloc (/ axdoc lfil dir u)
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
@@ -34,16 +34,16 @@
         (foreach f lfil 
             (if(setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
-				(setq u 0)
+                (setq u 0)
                 ; Loop over blocks while a block was deleted
-				(while (= u 0)
-					(setq u 1)
-					(vlax-for bloc (vla-get-blocks axdoc)
-						(if (not (vl-catch-all-error-p (vl-catch-all-apply 'vla-delete (list bloc))))
-							(setq u 0)
-						)
-					)
-				)
+                (while (= u 0)
+                    (setq u 1)
+                    (vlax-for bloc (vla-get-blocks axdoc)
+                        (if (not (vl-catch-all-error-p (vl-catch-all-apply 'vla-delete (list bloc))))
+                            (setq u 0)
+                        )
+                    )
+                )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
