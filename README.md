@@ -132,6 +132,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_getlengpolinlay](./odbx_get/odbx_getlengpolinlay.lsp), Get the length of Polylines in a layer.
 
+  [odbx_getnamelayout](./odbx_get/odbx_getnamelayout.lsp), Get the name of layouts.
+
 - Substitutes
 
   [odbx_substtext](odbx_subst/odbx_substtext.lsp) , Replace a text in a TEXT in the model space.
