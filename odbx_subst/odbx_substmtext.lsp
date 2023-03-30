@@ -3,13 +3,13 @@
 ;|
     odbx_substmtext.lsp 1.0
 
-	Replace a text in a multiline text in the model space.
+    Replace a text in a multiline text in the model space.
 
     Place the files, odbx_substmtext.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
 
-    Enter odbx_substmtext in Autocad and choose folder.
+    Enter odbx_substmtext in Autocad, the old text, the new  and choose folder.
 
     Drawings are not open.
 
@@ -24,37 +24,37 @@
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_substmtext (/ axdoc lfil dir old new text flag)
-	(setq old (getstring "Old text?")
-		  new (getstring "New text?")
-	)
+    (setq old (getstring "Old text?")
+          new (getstring "New text?")
+    )
         ; Choose folder.
     (if (setq dir (getdir) 
               ; dwg liste.
               lfil (vl-directory-files dir "*.dwg" 1)) 
         ; Loop over files.
         (foreach f lfil 
-			(if (setq axdoc (getaxdbdoc (strcat dir f)))
-			  (progn
-			    ; Loop over objects in model space.
-				(vlax-for obj (vla-get-modelspace axdoc)
-				    ; If it's a mtext.
-					(if (and (= (vla-get-ObjectName obj) "AcDbMText")
-						 (vl-string-search old (setq text (vla-get-textstring obj)))
-						 )
-						 (progn
-						   (vlax-put obj 'TextString (vl-string-subst new old text))
-						   (setq flag 1)
-						 )
-					)
-				)
-				(if flag (vla-saveas axdoc (strcat dir f)))
-				(vlax-release-object axdoc)
-			  )
+            (if (setq axdoc (getaxdbdoc (strcat dir f)))
+              (progn
+                ; Loop over objects in model space.
+                (vlax-for obj (vla-get-modelspace axdoc)
+                    ; If it's a mtext.
+                    (if (and (= (vla-get-ObjectName obj) "AcDbMText")
+                         (vl-string-search old (setq text (vla-get-textstring obj)))
+                         )
+                         (progn
+                           (vlax-put obj 'TextString (vl-string-subst new old text))
+                           (setq flag 1)
+                         )
+                    )
+                )
+                (if flag (vla-saveas axdoc (strcat dir f)))
+                (vlax-release-object axdoc)
+              )
             )
-			
-			(setq flag nil)
-	    )
-	)
+            
+            (setq flag nil)
+        )
+    )
 (princ)
 )
 
