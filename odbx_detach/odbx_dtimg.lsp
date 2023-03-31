@@ -30,9 +30,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_dtimg (/ axdoc lfil dir)
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
         (foreach f lfil 
             (if (setq axdoc (getaxdbdoc (strcat dir f)))
@@ -54,8 +54,10 @@
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
+              (print (strcat "\n" f ": Illegible or corrupt."))
             )
         )
+        (print (strcat "\nHave you lost your way?"))
     )
 (princ)
 )
