@@ -27,7 +27,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_setlayerfreeze (/ axdoc lfil dir)
         ; Choose folder.
-    (if (and(setq dir (getdir)) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
             (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
