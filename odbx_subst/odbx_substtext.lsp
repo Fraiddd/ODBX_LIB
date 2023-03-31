@@ -12,6 +12,8 @@
     Enter odbx_substtext in Autocad, the old text, the new  and choose folder.
 
     Drawings are not open.
+	
+    PLEASE NOTE, there is no going back.
 
     Tested on Windows 10 and Autocad 2015.
 
@@ -28,9 +30,9 @@
           new (getstring "New text?")
     )
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
         (foreach f lfil 
             (if (setq axdoc (getaxdbdoc (strcat dir f)))
@@ -51,9 +53,11 @@
                                 (vlax-release-object axdoc))
                 )
               )
+              (princ (strcat "\n" f ": Illegible or corrupt."))
             )
             (setq flag nil)
         )
+        (princ (strcat "\nHave you lost your way?"))
     )
 (princ)
 )
