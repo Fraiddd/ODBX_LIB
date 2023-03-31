@@ -9,7 +9,7 @@
 
     Use APPLOAD to load them.
 
-    Enter odbx_getlengpolinlay in Autocad and choose folder.
+    Enter odbx_getlengpolinlay in Autocad, the layer name and choose folder.
 
     Drawings are not open.
 
@@ -28,9 +28,9 @@
           tot 0
     )
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
       (progn
         (foreach f lfil 
@@ -53,11 +53,13 @@
                   (princ (strcat "\n  " (vla-get-name axdoc)": No Polylines"))
                 )
               )
+              (print (strcat "\n" f ": Illegible or corrupt."))
             )
         )
         (princ (strcat "\n  Total length : " (rtos tot)))
         (textscr)
       )
+      (print (strcat "\nHave you lost your way?"))
     )
 (princ)
 )

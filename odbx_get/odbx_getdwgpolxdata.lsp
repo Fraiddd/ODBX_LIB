@@ -28,9 +28,9 @@
            val (getstring "What Value")
     )
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
       (progn
         (foreach f lfil 
@@ -48,6 +48,7 @@
                 )
                 (vlax-release-object axdoc)
               )
+              (print (strcat "\n" f ": Illegible or corrupt."))
             )
         )
         (if ldwg
@@ -60,6 +61,7 @@
           (princ "\nNo files found." )
         )
       )
+      (print (strcat "\nHave you lost your way?"))
     )
 (princ)
 )

@@ -28,9 +28,9 @@
           tot 0
     )
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
       (progn
         (foreach f lfil 
@@ -54,11 +54,13 @@
                   (princ (strcat "\n  " f ": No Block named " bloc))
                 )
               )
+              (princ (strcat "\n" f ": Illegible or corrupt."))
             )
         )
         (princ (strcat "\n  Total : " (itoa tot) " Blocks"))
         (textscr)
       )
+      (princ (strcat "\nHave you lost your way?"))
     )
 (princ)
 )

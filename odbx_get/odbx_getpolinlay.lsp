@@ -29,9 +29,9 @@
           lay (getstring "What layer?")
     )
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
       (progn
         (foreach f lfil 
@@ -56,10 +56,12 @@
                   )
                 )
               )
+              (princ (strcat "\n" f ": Illegible or corrupt."))
             )
         )
         (vla-zoomextents acobj)
       )
+      (princ (strcat "\nHave you lost your way?"))
     )
 (princ)
 )
