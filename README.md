@@ -47,8 +47,8 @@ Need getdir function in odbx_fct.lsp
 ```
 (defun c:<foo> (/ axdoc lfil dir)
         ; Choose folder.
-    (if (setq dir (getdir)
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+    (if (and (setq dir (getdir))
+             (setq  lfil (vl-directory-files dir "*.dwg" 1))) 
         (foreach f lfil 
           (if (setq axdoc (getaxdbdoc (strcat dir f)))
             (progn
@@ -136,6 +136,12 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_getlistlayer](./odbx_get/odbx_getlistlayer.lsp), Get the name of layers.
 
+- Seters
+
+  [odbx_setlayerfreeze](./odbx_get/odbx_setlayerfreeze.lsp), Freeze all layer (not the current layer).
+
+
+
 - Substitutes
 
   [odbx_substtext](odbx_subst/odbx_substtext.lsp) , Replace a text in a TEXT in the model space.
@@ -167,6 +173,8 @@ I remind you that there is no possible return, and that it is advisable to save 
   [odbx_dtole](odbx_detach/odbx_dtole.lsp) , Detach OLE object.
 
   [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf.
+
+  To detach xrefs you must use accoreconsole.exe.
 
 - Purges
 
