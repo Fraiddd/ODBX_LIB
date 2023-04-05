@@ -3,7 +3,7 @@
 ;|
     odbx_dtimgnoref.lsp 1.0
 
-    Detach images not referenced from drawings contained in a folder.
+    Detach images not referenced from drawings contained in a folder (in all layouts).
 
     Place the files, odbx_dtimgnoref.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
@@ -25,7 +25,7 @@
 (vl-load-com)
 ;(load "fct.lsp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun c:odbx_dtimgnoref (/ axdoc lfil dir)
+(defun c:odbx_dtimgnoref (/ axdoc lfil dir img_fil)
         ; Choose folder.
     (if (and (setq dir (getdir)) 
               ; dwg liste.
@@ -34,12 +34,13 @@
         (foreach f lfil 
             (if (setq axdoc (getaxdbdoc (strcat dir f)))
               (progn
-                ; Loop over objects.
-                (vlax-for obj (vla-get-modelspace axdoc)
+                ; Loop over layouts.
+                (vlax-for layout (vlax-get-property axdoc 'layouts)
+                  ; Loop over objects.
+                  (vlax-for obj  (vlax-get-property layout 'block)
                     ; If the object is an image and the path is valide.
-                    (if (and(= (vla-get-objectname obj) "AcDbRasterImage")
-					        (not (findfile (vla-get-ImageFile obj)))
-					    )
+                    (and (= (vla-get-objectname obj) "AcDbRasterImage")
+                         (not (findfile (fullpath dir (vla-get-ImageFile obj))))
                         ; Delete it from the dictionary "ACAD_IMAGE_DICT".
                         (vla-delete 
                             (vla-item 
@@ -49,6 +50,7 @@
                             )
                         ) 
                     )
+                  )
                 )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
@@ -62,4 +64,15 @@
 )
 
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(defun fullpath (dir path)
+	(setq dir (vl-string-right-trim "\\" dir))
+    (if (= (vl-string-position 46 path) 0)
+	  (progn
+        (while (= (vl-string-position 46 (substr path 2)) 0)
+            (setq dir (substr dir 1 (vl-string-position 92 dir 0 t)) path (substr path 2))
+        )
+        (setq path (strcat dir "\\" (substr path 3)))
+	  )
+    )
+    path
+)
