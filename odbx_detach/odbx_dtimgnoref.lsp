@@ -65,14 +65,14 @@
 
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun fullpath (dir path)
-	(setq dir (vl-string-right-trim "\\" dir))
+    (setq dir (vl-string-right-trim "\\" dir))
     (if (= (vl-string-position 46 path) 0)
-	  (progn
+      (progn
         (while (= (vl-string-position 46 (substr path 2)) 0)
             (setq dir (substr dir 1 (vl-string-position 92 dir 0 t)) path (substr path 2))
         )
         (setq path (strcat dir "\\" (substr path 3)))
-	  )
+      )
     )
     path
 )
