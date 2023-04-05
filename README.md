@@ -170,6 +170,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_dtimg](odbx_detach/odbx_dtimg.lsp) , Detach images.
 
+  [odbx_dtimgnoref](odbx_detach/odbx_dtimgnoref.lsp) , Detach images not referenced from drawings contained in a folder (in all layouts).
+
   [odbx_dtole](odbx_detach/odbx_dtole.lsp) , Detach OLE object.
 
   [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf.
