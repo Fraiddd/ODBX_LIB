@@ -1,7 +1,7 @@
 ; ANSI-Windows 1252
 ; Autolisp, Visual Lisp
 ;|
-    odbx_dtimgnoref.lsp 1.0
+    odbx_dtimgnoref.lsp 1.1
 
     Detach images not referenced from drawings contained in a folder (in all layouts).
 
