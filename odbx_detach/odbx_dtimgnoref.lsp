@@ -64,6 +64,13 @@
 )
 
 ;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;fullpath
+;Return a full path
+;Arguments:
+;   dir, string "c:\Data\Temp\"
+;   path, string "..\ref\update.json"
+;Return: 
+;   string, "c:\Data\ref\update.json"
 (defun fullpath (dir path)
     (setq dir (vl-string-right-trim "\\" dir))
     (if (= (vl-string-position 46 path) 0)
