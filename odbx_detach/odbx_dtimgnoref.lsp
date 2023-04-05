@@ -38,7 +38,7 @@
                 (vlax-for layout (vlax-get-property axdoc 'layouts)
                   ; Loop over objects.
                   (vlax-for obj  (vlax-get-property layout 'block)
-                    ; If the object is an image and the path is valide.
+                    ; If the object is an image and the path is not valide.
                     (and (= (vla-get-objectname obj) "AcDbRasterImage")
                          (not (findfile (fullpath dir (vla-get-ImageFile obj))))
                         ; Delete it from the dictionary "ACAD_IMAGE_DICT".
