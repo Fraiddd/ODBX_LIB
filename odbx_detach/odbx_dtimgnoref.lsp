@@ -37,20 +37,35 @@
                 ; Loop over layouts.
                 (vlax-for layout (vlax-get-property axdoc 'layouts)
                   ; Loop over objects.
+                 (if (/= (vla-get-name layout) "Model")
                   (vlax-for obj  (vlax-get-property layout 'block)
                     ; If the object is an image and the path is not valide.
-                    (and (= (vla-get-objectname obj) "AcDbRasterImage")
-                         (not (findfile (fullpath dir (vla-get-ImageFile obj))))
+                    (if (= (vla-get-objectname obj) "AcDbRasterImage")
+                         ;(not (findfile (fullpath dir (vla-get-ImageFile obj))))
                         ; Delete it from the dictionary "ACAD_IMAGE_DICT".
                         (vla-delete 
                             (vla-item 
-                                (vla-item (vla-get-dictionaries axdoc )
+                                (vla-item (vla-get-dictionaries axdoc)
                                           "ACAD_IMAGE_DICT") 
                                 (vla-get-name obj)
                             )
                         ) 
                     )
                   )
+                 )
+                )
+                (vlax-for block (vla-get-blocks axdoc)
+                    (vlax-for obj block
+                      (if (= (vla-get-objectname obj) "AcDbRasterImage")
+                        (vla-delete 
+                            (vla-item 
+                                (vla-item (vla-get-dictionaries axdoc)
+                                          "ACAD_IMAGE_DICT") 
+                                (vla-get-name obj)
+                            )
+                        )
+                      )
+                    )
                 )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)

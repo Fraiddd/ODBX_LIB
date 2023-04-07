@@ -13,8 +13,6 @@
 
     Drawings are not open.
 
-    PLEASE NOTE, there is no going back.
-
     Tested on Windows 10 and Autocad 2015.
 
     No copyright: (!) 2021 by Frédéric Coulon.
@@ -40,7 +38,6 @@
                 (vlax-for lay (vla-get-layers axdoc)
                     (princ (strcat "\n    " (vla-get-name lay)))
                 )
-                (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
               (princ (strcat "\n" f ": Illegible or corrupt."))

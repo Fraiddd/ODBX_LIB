@@ -136,7 +136,7 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_getlistlayer](./odbx_get/odbx_getlistlayer.lsp), Get the name of layers.
 
-- Seters
+  - Seters
 
   [odbx_setlayerfreeze](./odbx_get/odbx_setlayerfreeze.lsp), Freeze all layer (not the current layer).
 
