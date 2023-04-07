@@ -5,7 +5,7 @@
 
 [ObjectDBX](https://help.autodesk.com/view/OARX/2019/FRA/?guid=GUID-FF60A11B-1169-483C-9A65-85203B3A1440) allows you to create your own 'ObjectDBX Host Application' a standalone application that can load and manipulate drawings.
 ObjectDBX is a subset of ObjectARX and a C++ object‐oriented API for manipulating AutoCAD and its related objects, collections, properties, methods.
-This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it's limited, using [accoreconsole.exe](../ACCORE/README.md) is complementary.
+This is perfect for batch processing of dwgs, especially for looking up information. Editing drawings is trickier because it's limited, using [accoreconsole.exe](./ACCORE/README.md) is complementary.
 
     - No access to System Variables (getvar ...)
 
@@ -176,7 +176,7 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf.
 
-  To detach xrefs you must use [accoreconsole.exe](../ACCORE/README.md).
+  To detach xrefs you must use [accoreconsole.exe](./ACCORE/README.md).
 
 - Purges
 
@@ -194,7 +194,7 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_purgeTextStyle](odbx_purge/odbx_purgeTextStyle.lsp) , Purge Text Style.
 
-  To purge properly you must use [accoreconsole.exe](../ACCORE/README.md).
+  To purge properly you must use [accoreconsole.exe](./ACCORE/README.md).
 
 ### Root
 
