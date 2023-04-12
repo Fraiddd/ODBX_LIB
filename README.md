@@ -137,7 +137,7 @@ I remind you that there is no possible return, and that it is advisable to save 
   [odbx_getlistlayer](./odbx_get/odbx_getlistlayer.lsp), Get the name of layers.
 
   [odbx_odbx_getcustominfo](./odbx_get/odbx_getcustominfo.lsp), Get custom infos.
-  
+
 
 - Seters
 
@@ -206,6 +206,8 @@ I remind you that there is no possible return, and that it is advisable to save 
   An experience of [Michael_Puckett](odbx_root/odbx_Michael_Puckett.lsp)
 
   Special thanks for Patrick_35, Gile and Lee Mac.
+
+   - http://www.lee-mac.com/odbxbase.html
 
    - http://www.theswamp.org/
 
