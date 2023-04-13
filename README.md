@@ -138,10 +138,13 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_odbx_getcustominfo](./odbx_get/odbx_getcustominfo.lsp), Get custom infos.
 
+- Senders
+
+  [odbx_sendlayers](./odbx_send/odbx_sendlayers.lsp), Sends the layers of a current drawing to a drawing folder.
 
 - Seters
 
-  [odbx_setlayerfreeze](./odbx_get/odbx_setlayerfreeze.lsp), Freeze all layer (not the current layer).
+  [odbx_setlayerfreeze](./odbx_set/odbx_setlayerfreeze.lsp), Freeze all layer (not the current layer).
 
 
 
