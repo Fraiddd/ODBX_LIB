@@ -146,6 +146,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_sendlinetype](./odbx_send/odbx_sendlinetype.lsp), Sends the line types to a drawing folder.
 
+  [odbx_sendTextStyle](./odbx_send/odbx_sendTextStyle.lsp), Sends the text styles to a drawing folder.
+
 
 - Seters
 
