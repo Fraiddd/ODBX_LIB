@@ -3,7 +3,7 @@
 ;|
     odbx_sendlinetype.lsp 1.0
 
-    Sends the selection to a drawing folder.
+    Sends the line types to a drawing folder.
 
     Place the files, odbx_sendlinetype.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
