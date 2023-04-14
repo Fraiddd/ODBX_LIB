@@ -179,6 +179,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_substatt](odbx_subst/odbx_substatt.lsp) , Replace a text in a ATTRIBUT in the model space.
 
+  [odbx_substbloc](odbx_subst/odbx_substbloc.lsp) , Replace a block with another with the same name.
+
 - Deletes
 
   [odbx_delobjinlay](odbx_del/odbx_delobjinlay.lsp) , Delete all objects in a layer and purge layers.
