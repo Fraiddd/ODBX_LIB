@@ -148,6 +148,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_sendTextStyle](./odbx_send/odbx_sendTextStyle.lsp), Sends the text styles to a drawing folder.
 
+  [odbx_sendviews](./odbx_send/odbx_sendviews.lsp), Sends the views to a drawing folder.
+
 
 - Seters
 
