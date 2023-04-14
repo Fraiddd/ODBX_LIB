@@ -142,7 +142,7 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_sendlayers](./odbx_send/odbx_sendlayers.lsp), Sends the layers of a current drawing to a drawing folder.
 
-  [odbx_sendsel](./odbx_send/odbx_sendlayers.lsp), Sends the selection to a drawing folder.
+  [odbx_sendsel](./odbx_send/odbx_sendsel.lsp), Sends the selection to a drawing folder.
 
   [odbx_sendlinetype](./odbx_send/odbx_sendlinetype.lsp), Sends the line types to a drawing folder.
 
