@@ -152,6 +152,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_senducs](./odbx_send/odbx_sendviews.lsp), Sends the UCS to a drawing folder.
 
+  [odbx_senddimstyles](./odbx_send/odbx_senddimstyles.lsp), Sends the dimension styles to a drawing folder.
+
 
 - Seters
 
