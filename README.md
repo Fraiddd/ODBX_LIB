@@ -181,19 +181,19 @@ I remind you that there is no possible return, and that it is advisable to save 
 
 - Detachs
 
-  [odbx_dtcloud](odbx_detach/odbx_dtcloud.lsp) , Detach point Clouds.
+  [odbx_dtcloud](odbx_detach/odbx_dtcloud.lsp) , Detach point Clouds  in the model space.
 
-  [odbx_dtdgn](odbx_detach/odbx_dtdgn.lsp) , Detach .dgn.
+  [odbx_dtdgn](odbx_detach/odbx_dtdgn.lsp) , Detach .dgn  in the model space.
 
-  [odbx_dtdwf](odbx_detach/odbx_dtdwf.lsp) , Detach .dwf.
+  [odbx_dtdwf](odbx_detach/odbx_dtdwf.lsp) , Detach .dwf  in the model space.
 
-  [odbx_dtimg](odbx_detach/odbx_dtimg.lsp) , Detach images.
+  [odbx_dtimg](odbx_detach/odbx_dtimg.lsp) , Detach images  in the model space.
 
   [odbx_dtimgnoref](odbx_detach/odbx_dtimgnoref.lsp) , Detach images not referenced from drawings contained in a folder (in all layouts).
 
-  [odbx_dtole](odbx_detach/odbx_dtole.lsp) , Detach OLE object.
+  [odbx_dtole](odbx_detach/odbx_dtole.lsp) , Detach OLE object  in the model space.
 
-  [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf.
+  [odbx_dtpdf](odbx_detach/odbx_dtpdf.lsp) , Detach .pdf  in the model space.
 
   To detach xrefs you must use [accoreconsole.exe](https://github.com/Fraiddd/ACCORE).
 
