@@ -144,11 +144,22 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_sendsel](./odbx_send/odbx_sendlayers.lsp), Sends the selection to a drawing folder.
 
+  [odbx_sendlinetype](./odbx_send/odbx_sendlinetype.lsp), Sends the line types to a drawing folder.
+
+
 - Seters
 
   [odbx_setlayerfreeze](./odbx_set/odbx_setlayerfreeze.lsp), Freeze all layer (not the current layer).
 
+  [odbx_setlayerlock](./odbx_set/odbx_setlayerlock.lsp), All layers are locked.
 
+  [odbx_setlayeroff](./odbx_set/odbx_setlayeroff.lsp), All layers off.
+
+  [odbx_setlayeron](./odbx_set/odbx_setlayeron.lsp), All layers on.
+
+  [odbx_setlayerthaw](./odbx_set/odbx_setlayerthaw.lsp), All layers are thawed.
+
+  [odbx_setlayerunlock](./odbx_set/odbx_setlayerunlock.lsp), All layers are unlocked.
 
 - Substitutes
 
