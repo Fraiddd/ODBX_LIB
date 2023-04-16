@@ -60,7 +60,7 @@
         (princ (strcat "\n  Total : " (itoa tot) " Blocks"))
         (textscr)
       )
-      (princ (strcat "\nHave you lost your way?"))
+      (princ "\nHave you lost your way?")
     )
 (princ)
 )

@@ -27,9 +27,9 @@
     (setq acobj (vlax-get-acad-object)
           model (vla-get-modelspace (vla-get-activedocument acobj)))
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
       (progn
         ; Loop over files.
         (foreach f lfil 
@@ -55,6 +55,7 @@
         )
         (vla-zoomextents acobj)
       )
+      (princ "\nHave you lost your way?")
     )
 (princ)
 )

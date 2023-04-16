@@ -59,7 +59,7 @@
         (princ (strcat "\n  Total length : " (rtos tot)))
         (textscr)
       )
-      (print (strcat "\nHave you lost your way?"))
+      (print "\nHave you lost your way?")
     )
 (princ)
 )

@@ -61,7 +61,7 @@
           (princ "\nNo files found." )
         )
       )
-      (print (strcat "\nHave you lost your way?"))
+      (print "\nHave you lost your way?")
     )
 (princ)
 )

@@ -25,9 +25,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:odbx_getnamelayout (/ axdoc lfil dir name)
         ; Choose folder.
-    (if (setq dir (getdir) 
+    (if (and (setq dir (getdir)) 
               ; dwg liste.
-              lfil (vl-directory-files dir "*.dwg" 1)) 
+            (setq lfil (vl-directory-files dir "*.dwg" 1))) 
         ; Loop over files.
       (progn
         (foreach f lfil 
@@ -45,6 +45,7 @@
         )
         (textscr)
       )
+      (princ "\nHave you lost your way?")
     )
 (princ)
 )
