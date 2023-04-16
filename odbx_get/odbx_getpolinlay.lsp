@@ -15,7 +15,7 @@
 
     Tested on Windows 10 and Autocad 2015.
 
-    No copyright: (!) 2021 by Frédéric Coulon.
+    No copyright: (!) 2021 by Frï¿½dï¿½ric Coulon.
     No license: Do with it what you want.
 
 |;
@@ -61,10 +61,10 @@
         )
         (vla-zoomextents acobj)
       )
-      (princ (strcat "\nHave you lost your way?"))
+      (princ "\nHave you lost your way?")
     )
 (princ)
 )
 
-;é;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;ï¿½;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

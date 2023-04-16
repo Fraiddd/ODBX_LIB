@@ -73,7 +73,7 @@
               (princ (strcat "\n" f ": Illegible or corrupt."))
             )
         )
-        (princ (strcat "\nHave you lost your way?"))
+        (princ "\nHave you lost your way?")
     )
 (princ)
 )
