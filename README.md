@@ -169,6 +169,8 @@ I remind you that there is no possible return, and that it is advisable to save 
 
   [odbx_setlayerunlock](./odbx_set/odbx_setlayerunlock.lsp), All layers are unlocked.
 
+  [odbx_setblocbybloclay0](./odbx_set/odbx_setblocbybloclay0.lsp), Place all block objects in layer "0" and force color, linetype and thickness to "byblock".
+
 - Substitutes
 
   [odbx_substtext](odbx_subst/odbx_substtext.lsp) , Replace a text in a TEXT in the model space.

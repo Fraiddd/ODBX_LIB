@@ -4,7 +4,7 @@
     odbx_setblocbybloclay0.lsp 1.0
 
     Place all block objects in layer "0" and force color, linetype and thickness to "byblock".
-	
+    
     Place the files, odbx_setblocbybloclay0.lsp and odbx_fct.lsp, in an Autocad approved folder.
 
     Use APPLOAD to load them.
@@ -36,15 +36,15 @@
               (progn
                 ; Loop over blocks
                 (vlax-for bloc (vla-get-blocks axdoc)
-					(if (= (vla-get-islayout bloc) :vlax-false)
-						(vlax-for obj bloc
-							(vla-put-layer obj "0")
-							(vla-put-color obj 0)
-							(vla-put-linetype obj "ByBlock")
-							(vla-put-lineweight obj -2)
-						)
-					)
-				)
+                    (if (= (vla-get-islayout bloc) :vlax-false)
+                        (vlax-for obj bloc
+                            (vla-put-layer obj "0")
+                            (vla-put-color obj 0)
+                            (vla-put-linetype obj "ByBlock")
+                            (vla-put-lineweight obj -2)
+                        )
+                    )
+                )
                 (vla-saveas axdoc (strcat dir f))
                 (vlax-release-object axdoc)
               )
